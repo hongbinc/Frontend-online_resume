@@ -11,13 +11,13 @@
     "skills": [
         "HTML", "CSS", "Javascript", "jQuery", "Bootstrap", "Wordpress"
     ],
-    "bioPic": "images/fry.jpg"
+    "biopic": "images/fry.jpg"
 };
 
 bio.display = function () {
     var formattedName = HTMLheaderName.replace("%data%", bio.name);
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-    var formattedPic = HTMLbioPic.replace("%data%", bio.bioPic);
+    var formattedPic = HTMLbioPic.replace("%data%", bio.biopic);
 
     $("#header").prepend(formattedName)
         .prepend(formattedRole)
@@ -47,7 +47,8 @@ var education = {
     "onlineCourses": {
         "title": "Front-end Developer",
         "school": "Udacity",
-        "dates": 2016
+        "date": 2016,
+        "url": "https://www.udacity.com/"
     },
 
     "schools": [{
@@ -55,13 +56,15 @@ var education = {
         "location": "New York",
         "degree": "B.S.",
         "majors": ["Computer Science"],
-        "dates": "Graduated May 2015"
+        "date": "Graduated May 2015",
+        "url": "http://www.buffalo.edu/"
     }, {
         "name": "College of Staten Island",
         "location": "New York",
         "degree": "B.S.",
         "majors": ["Business Administration"],
-        "dates": "August 2011- December 2011"
+        "date": "August 2011- December 2011",
+        "url": "http://www.csi.cuny.edu/"
     }]
 };
 
@@ -70,12 +73,13 @@ education.display = function () {
         for (var school in education.schools) {
             $("#education").append(HTMLschoolStart);
 
-            var formattedSchool = HTMLschoolName.replace("%data%", education.schools[school].name);
+            var formattedSchool = HTMLschoolName.replace("%data%", education.schools[school].name)
+                                                .replace("#", education.schools[school].url);
             var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
             var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].date);
             var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
-
+            
             $(".education-entry:last").append(formattedSchool)
                 .append(formattedSchoolDates)
                 .append(formattedSchoolMajor)
@@ -84,9 +88,11 @@ education.display = function () {
         }
     }
 
-    var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses.school);
+    var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses.school)
+                                              .replace("#", education.onlineCourses.url);
     var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses.title);
-    var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses.dates);
+    var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses.date);
+    
     $(".education-entry:last").append(formattedOnlineTitle)
         .append(formattedOnlineDates)
         .append(formattedOnlineSchool);
@@ -96,9 +102,9 @@ var work = {
         "employer": "University at Buffalo",
         "title": "Campus Living Area Office Assistance",
         "dates": "Aug 2012 - Apr 2013",
-        "description": [
-            "•	Provided campus living information to students   •	Worked to build community within the dormitory   •	Manage keys and swipe access cards"
-        ],
+        "description": 
+            "Provided campus living information to students, worked to build community within the dormitory and manage keys and swipe access cards"
+        ,
         "location": "Buffalo, New York"
     }]
 };
