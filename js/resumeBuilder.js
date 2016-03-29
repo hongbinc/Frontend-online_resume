@@ -126,7 +126,7 @@ var project = {
         "title" : "Neighborhood Map",
         "dates" : "03/2016",
         "description": "<ur style='list-style-type:disc'><li>Developed single page application featuring a map of neighborhood with Knockout.JS using MVVM architecture.</li><li>Implemented third party APIs (Google Map and Foursquare) allowed users define a neighborhood and displayed 20 popular places on the map with map markers.</li><li>Build a search bar to filter the places.</li></ur>",
-      //  "images": ["images/"],
+        "images": [],
         "url": "https://github.com/hongbinc/Frontend-NeighborhoodMap"
            
     }, 
@@ -134,7 +134,7 @@ var project = {
         "title": "Website Optimization",
         "dates": "03/2016",
         "description": "<ur><li>Optimized critical rendering path of existing website to achieve PageSpeed Insights score above 90.</li><li> Eliminated inefficiencies in the website's scroll animation.</li></ur>",
-        //"images": ["images/"],
+        "images": ["images/WebsiteOptimized.JPG"],
         "url": "https://github.com/hongbinc/Frontend-WebsiteOptimization"
     }],
 };
@@ -152,7 +152,11 @@ project.display = function () {
         $(".project-entry:last").append(formattedProjectTitle)
         .append(formattedProjectDate)
         .append(formattedProjectDescription);
-        
+
+        if (project.projects[projects].images.length > 0) {
+            var formattedProjectImage = HTMLprojectImage.replace("%data%",project.projects[projects].images);
+            $(".project-entry:last").append(formattedProjectImage);
+        }
     };
 
 
