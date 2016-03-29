@@ -125,7 +125,7 @@ var project = {
     projects: [{
         "title" : "Neighborhood Map",
         "dates" : "03/2016",
-        "description": "<ur><li>Developed single page application featuring a map of neighborhood with Knockout.JS using MVVM architecture.</li><li>Implemented third party APIs (Google Map and Foursquare) allowed users define a neighborhood and displayed 20 popular places on the map with map markers.</li><li>Build a search bar to filter the places.</li></ur>",
+        "description": "<ur style='list-style-type:disc'><li>Developed single page application featuring a map of neighborhood with Knockout.JS using MVVM architecture.</li><li>Implemented third party APIs (Google Map and Foursquare) allowed users define a neighborhood and displayed 20 popular places on the map with map markers.</li><li>Build a search bar to filter the places.</li></ur>",
       //  "images": ["images/"],
         "url": "https://github.com/hongbinc/Frontend-NeighborhoodMap"
            
@@ -133,7 +133,7 @@ var project = {
     {
         "title": "Website Optimization",
         "dates": "03/2016",
-        "description": "Optimized critical rendering path of existing website to achieve PageSpeed Insights score above 90. Eliminated inefficiencies in the website's scroll animation.",
+        "description": "<ur><li>Optimized critical rendering path of existing website to achieve PageSpeed Insights score above 90.</li><li> Eliminated inefficiencies in the website's scroll animation.</li></ur>",
         //"images": ["images/"],
         "url": "https://github.com/hongbinc/Frontend-WebsiteOptimization"
     }],
@@ -141,9 +141,19 @@ var project = {
 
 project.display = function () {
 
-    for(project in project.projects){
+    for (var projects in project.projects) {
+        $("#projects").append(HTMLprojectStart);
         
-    }
+        var formattedProjectTitle = HTMLprojectTitle.replace("%data%", project.projects[projects].title)
+                                                    .replace("#", project.projects[projects].url);
+        var formattedProjectDate = HTMLprojectDates.replace("%data%", project.projects[projects].dates);
+        var formattedProjectDescription = HTMLprojectDescription.replace("%data%", project.projects[projects].description);
+
+        $(".project-entry:last").append(formattedProjectTitle)
+        .append(formattedProjectDate)
+        .append(formattedProjectDescription);
+        
+    };
 
 
 };
@@ -151,5 +161,6 @@ project.display = function () {
 work.display();
 bio.display();
 education.display();
+project.display();
 
 $("#mapDiv").append(googleMap);
