@@ -123,10 +123,29 @@ work.display = function () {
 
 var project = {
     projects: [{
+        "title" : "Neighborhood Map",
+        "dates" : "03/2016",
+        "description": "<ur><li>Developed single page application featuring a map of neighborhood with Knockout.JS using MVVM architecture.</li><li>Implemented third party APIs (Google Map and Foursquare) allowed users define a neighborhood and displayed 20 popular places on the map with map markers.</li><li>Build a search bar to filter the places.</li></ur>",
+      //  "images": ["images/"],
+        "url": "https://github.com/hongbinc/Frontend-NeighborhoodMap"
+           
+    }, 
+    {
+        "title": "Website Optimization",
+        "dates": "03/2016",
+        "description": "Optimized critical rendering path of existing website to achieve PageSpeed Insights score above 90. Eliminated inefficiencies in the website's scroll animation.",
+        //"images": ["images/"],
+        "url": "https://github.com/hongbinc/Frontend-WebsiteOptimization"
+    }],
+};
 
-    }, {
+project.display = function () {
 
-    }]
+    for(project in project.projects){
+        
+    }
+
+
 };
 
 work.display();
