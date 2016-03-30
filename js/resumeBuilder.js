@@ -44,26 +44,26 @@ bio.display = function () {
 };
 
 var education = {
-    "onlineCourses": {
+    "onlineCourses": [{
         "title": "Front-end Developer",
         "school": "Udacity",
-        "date": 2016,
+        "dates": 2016,
         "url": "https://www.udacity.com/"
-    },
+    }],
 
     "schools": [{
         "name": "University at Buffalo",
         "location": "New York",
         "degree": "B.S.",
         "majors": ["Computer Science"],
-        "date": "Graduated May 2015",
+        "dates": "Graduated May 2015",
         "url": "http://www.buffalo.edu/"
     }, {
         "name": "College of Staten Island",
         "location": "New York",
         "degree": "B.S.",
         "majors": ["Business Administration"],
-        "date": "August 2011- December 2011",
+        "dates": "August 2011- December 2011",
         "url": "http://www.csi.cuny.edu/"
     }]
 };
@@ -77,7 +77,7 @@ education.display = function () {
                                                 .replace("#", education.schools[school].url);
             var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
             var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].date);
+            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
             var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
             
             $(".education-entry:last").append(formattedSchool)
@@ -88,10 +88,10 @@ education.display = function () {
         }
     }
 
-    var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses.school)
-                                              .replace("#", education.onlineCourses.url);
-    var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses.title);
-    var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses.date);
+    var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[0].school)
+                                              .replace("#", education.onlineCourses[0].url);
+    var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[0].title);
+    var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[0].dates);
     
     $(".education-entry:last").append(formattedOnlineTitle)
         .append(formattedOnlineDates)
@@ -103,8 +103,8 @@ var work = {
         "title": "Campus Living Area Office Assistance",
         "dates": "Aug 2012 - Apr 2013",
         "description": 
-            "Provided campus living information to students, worked to build community within the dormitory and manage keys and swipe access cards"
-        ,
+            "Provided campus living information to students, worked to build community within the dormitory and manage keys and swipe access cards",
+        
         "location": "Buffalo, New York"
     }]
 };
@@ -127,8 +127,8 @@ work.display = function () {
     }
 };
 
-var project = {
-    projects: [{
+var projects = {
+    project: [{
         "title" : "Neighborhood Map",
         "dates" : "03/2016",
         "description": "<ur style='list-style-type:disc'><li>Developed single page application featuring a map of neighborhood with Knockout.JS using MVVM architecture.</li><li>Implemented third party APIs (Google Map and Foursquare) allowed users define a neighborhood and displayed 20 popular places on the map with map markers.</li><li>Build a search bar to filter the places.</li></ur>",
@@ -145,25 +145,25 @@ var project = {
     }],
 };
 
-project.display = function () {
+projects.display = function () {
 
-    for (var projects in project.projects) {
+    for (var proj in projects.project) {
         $("#projects").append(HTMLprojectStart);
         
-        var formattedProjectTitle = HTMLprojectTitle.replace("%data%", project.projects[projects].title)
-                                                    .replace("#", project.projects[projects].url);
-        var formattedProjectDate = HTMLprojectDates.replace("%data%", project.projects[projects].dates);
-        var formattedProjectDescription = HTMLprojectDescription.replace("%data%", project.projects[projects].description);
+        var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.project[proj].title)
+                                                    .replace("#", projects.project[proj].url);
+        var formattedProjectDate = HTMLprojectDates.replace("%data%", projects.project[proj].dates);
+        var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.project[proj].description);
 
         $(".project-entry:last").append(formattedProjectTitle)
         .append(formattedProjectDate)
         .append(formattedProjectDescription);
 
-        if (project.projects[projects].images.length > 0) {
-            var formattedProjectImage = HTMLprojectImage.replace("%data%",project.projects[projects].images);
+        if (projects.project[proj].images.length > 0) {
+            var formattedProjectImage = HTMLprojectImage.replace("%data%",projects.project[proj].images);
             $(".project-entry:last").append(formattedProjectImage);
         }
-    };
+    }
 
 
 };
@@ -171,6 +171,6 @@ project.display = function () {
 work.display();
 bio.display();
 education.display();
-project.display();
+projects.display();
 
 $("#mapDiv").append(googleMap);
