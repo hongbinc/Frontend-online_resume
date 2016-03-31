@@ -47,7 +47,7 @@ var education = {
     "onlineCourses": [{
         "title": "Front-end Developer",
         "school": "Udacity",
-        "dates": 2016,
+        "dates": "2016",
         "url": "https://www.udacity.com/"
     }],
 
