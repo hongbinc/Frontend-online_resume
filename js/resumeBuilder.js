@@ -18,10 +18,12 @@ bio.display = function () {
     var formattedName = HTMLheaderName.replace("%data%", bio.name);
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
     var formattedPic = HTMLbioPic.replace("%data%", bio.biopic);
+    var formattedWelMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
     $("#header").prepend(formattedName)
         .prepend(formattedRole)
         .prepend(formattedPic)
+        .append(formattedWelMessage)
         .append(HTMLskillsStart);
 
     var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
@@ -92,10 +94,13 @@ education.display = function () {
                                               .replace("#", education.onlineCourses[0].url);
     var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[0].title);
     var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[0].date);
-    
-    $(".education-entry:last").append(formattedOnlineTitle)
+    var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[0].url);
+
+    $(".education-entry:last").append(HTMLonlineClasses)
+        .append(formattedOnlineTitle)
         .append(formattedOnlineDates)
-        .append(formattedOnlineSchool);
+        .append(formattedOnlineSchool)
+        .append(formattedOnlineURL);
 };
 var work = {
     "jobs": [{
