@@ -47,7 +47,7 @@ var education = {
     "onlineCourses": [{
         "title": "Front-end Developer",
         "school": "Udacity",
-        "dates": "2016",
+        "date": "2016",
         "url": "https://www.udacity.com/"
     }],
 
@@ -91,7 +91,7 @@ education.display = function () {
     var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[0].school)
                                               .replace("#", education.onlineCourses[0].url);
     var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[0].title);
-    var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[0].dates);
+    var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[0].date);
     
     $(".education-entry:last").append(formattedOnlineTitle)
         .append(formattedOnlineDates)
@@ -128,12 +128,12 @@ work.display = function () {
 };
 
 var projects = {
-    project: [{
+    projects: [{
         "title" : "Neighborhood Map",
         "dates" : "03/2016",
         "description": "<ur style='list-style-type:disc'><li>Developed single page application featuring a map of neighborhood with Knockout.JS using MVVM architecture.</li><li>Implemented third party APIs (Google Map and Foursquare) allowed users define a neighborhood and displayed 20 popular places on the map with map markers.</li><li>Build a search bar to filter the places.</li></ur>",
-        "images": [],
-        "url": "https://github.com/hongbinc/Frontend-NeighborhoodMap"
+        "images": [""],
+      //  "url": "https://github.com/hongbinc/Frontend-NeighborhoodMap"
            
     }, 
     {
@@ -141,26 +141,26 @@ var projects = {
         "dates": "03/2016",
         "description": "<ur><li>Optimized critical rendering path of existing website to achieve PageSpeed Insights score above 90.</li><li> Eliminated inefficiencies in the website's scroll animation.</li></ur>",
         "images": ["images/WebsiteOptimized.JPG"],
-        "url": "https://github.com/hongbinc/Frontend-WebsiteOptimization"
+      //  "url": "https://github.com/hongbinc/Frontend-WebsiteOptimization"
     }],
 };
 
 projects.display = function () {
 
-    for (var proj in projects.project) {
+    for (var proj in projects.projects) {
         $("#projects").append(HTMLprojectStart);
         
-        var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.project[proj].title)
-                                                    .replace("#", projects.project[proj].url);
-        var formattedProjectDate = HTMLprojectDates.replace("%data%", projects.project[proj].dates);
-        var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.project[proj].description);
+        var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[proj].title);
+                                                   // .replace("#", projects.projects[proj].url);
+        var formattedProjectDate = HTMLprojectDates.replace("%data%", projects.projects[proj].dates);
+        var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[proj].description);
 
         $(".project-entry:last").append(formattedProjectTitle)
         .append(formattedProjectDate)
         .append(formattedProjectDescription);
 
-        if (projects.project[proj].images.length > 0) {
-            var formattedProjectImage = HTMLprojectImage.replace("%data%",projects.project[proj].images);
+        if (projects.projects[proj].images.length > 0) {
+            var formattedProjectImage = HTMLprojectImage.replace("%data%",projects.projects[proj].images);
             $(".project-entry:last").append(formattedProjectImage);
         }
     }
