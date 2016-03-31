@@ -122,11 +122,13 @@ work.display = function () {
             var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
             var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
             var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+            var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
             var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
             var formattedEmployerTitle = formattedEmployer + formattedTitle;
 
             $(".work-entry:last").append(formattedEmployerTitle)
                 .append(formattedDates)
+                .append(formattedWorkLocation)
                 .append(formattedDescription);
         }
     }
